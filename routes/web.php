@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\TasksController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\PermissionsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +25,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('tasks', \App\Http\Controllers\TasksController::class);
-
-    Route::resource('users', \App\Http\Controllers\UsersController::class);
+    Route::resource('tasks',TasksController::class);
+    Route::resource('users', UsersController::class);
 });
+
+Route::resource('roles', RolesController::class);
+Route::resource('permissions', PermissionsController::class);
