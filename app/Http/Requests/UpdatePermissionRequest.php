@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class UpdatePermissionRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class UpdatePermissionRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Gate::allows('permissions_management');
     }
 
     /**

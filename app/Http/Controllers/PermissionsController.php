@@ -6,15 +6,19 @@ use App\Http\Requests\StorePermissionRequest;
 use App\Http\Requests\UpdatePermissionRequest;
 use App\Models\Permission;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Symfony\Component\HttpFoundation\Response;
 
 class PermissionsController extends Controller
 {
     public function index() {
-        $permissions = Permission::all();
+        abort_if(Gate::denies('permissions_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $permissions = Permission::all()->sortByDesc('title');
         return view('permissions.index', compact('permissions'));
     }
 
     public function create() {
+        abort_if(Gate::denies('permissions_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $permission = Permission::pluck('id', 'title', 'slug', 'description');
         return view('permissions.create', compact('permission'));
     }
@@ -25,10 +29,12 @@ class PermissionsController extends Controller
     }
 
     public function show(Permission $permission) {
+        abort_if(Gate::denies('permissions_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return view('permissions.show', compact('permission'));
     }
 
     public function edit(Permission $permission) {
+        abort_if(Gate::denies('permissions_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return view('permissions.edit', compact('permission'));
     }
 
@@ -38,6 +44,7 @@ class PermissionsController extends Controller
     }
 
     public function destroy(Permission $permission) {
+        abort_if(Gate::denies('permissions_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $permission->delete();
         return redirect()->route('permissions.index');
     }
