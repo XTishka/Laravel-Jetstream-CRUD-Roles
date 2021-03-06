@@ -100,11 +100,33 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
+        // SETTINGS
+
         'settings_users' => [
             'driver' => 'single',
             'path'   => storage_path('logs/settings_users.log'),
             'level'  => 'debug'
-        ]
+        ],
+
+        'settings_roles' => [
+            'driver' => 'single',
+            'path'   => storage_path('logs/settings_roles.log'),
+            'level'  => 'debug'
+        ],
+
+        'settings_permissions' => [
+            'driver' => 'single',
+            'path'   => storage_path('logs/settings_permissions.log'),
+            'level'  => 'debug'
+        ],
+
+        // TEMPORARY
+
+        'tasks' => [
+            'driver' => 'single',
+            'path'   => storage_path('logs/tasks.log'),
+            'level'  => 'debug'
+        ],
     ],
 
 ];
