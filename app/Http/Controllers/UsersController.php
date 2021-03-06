@@ -34,7 +34,7 @@ class UsersController extends Controller
         $request->merge(['password' => Hash::make($request->input('password'))]);
         $user = User::create($request->all());
         $user->roles()->sync($request->input('roles', []));
-        LogingActions::writeLog('settings_users', 'user', 'store', $user->id, $request->all());
+        LogingActions::writeLog('user', 'store', $user->id, $request->all());
         return redirect()->route('users.index');
     }
 
@@ -62,7 +62,7 @@ class UsersController extends Controller
             $user->update($request->validated());
         }
         $user->roles()->sync($request->input('roles', []));
-        LogingActions::writeLog('settings_users', 'user','update', $user->id, $request->all());
+        LogingActions::writeLog('user','update', $user->id, $request->all());
         return redirect()->route('users.index');
     }
 
@@ -70,7 +70,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $user->delete();
-        LogingActions::writeLog('settings_users', 'user','delete', $user->id, null);
+        LogingActions::writeLog('user','delete', $user->id, null);
         return redirect()->route('users.index');
     }
 }

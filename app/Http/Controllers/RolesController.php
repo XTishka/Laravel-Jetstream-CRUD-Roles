@@ -29,7 +29,7 @@ class RolesController extends Controller
     public function store(StoreRoleRequest $request) {
         $role = Role::create($request->validated());
         $role->permissions()->sync($request->input('permissions', []));
-        LogingActions::writeLog('settings_roles','role', 'store', $role->id, $request->all());
+        LogingActions::writeLog('role', 'store', $role->id, $request->all());
         return redirect()->route('roles.index');
     }
 
@@ -49,14 +49,14 @@ class RolesController extends Controller
     public function update(UpdateRoleRequest $request, Role $role) {
         $role->update($request->validated());
         $role->permissions()->sync($request->input('permissions', []));
-        LogingActions::writeLog('settings_roles', 'role','update', $role->id, $request->all());
+        LogingActions::writeLog('role','update', $role->id, $request->all());
         return redirect()->route('roles.index');
     }
 
     public function destroy(Role $role) {
         abort_if(Gate::denies('roles_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $role->delete();
-        LogingActions::writeLog('settings_roles', 'role','update', $role->id, null);
+        LogingActions::writeLog('role','update', $role->id, null);
         return redirect()->route('roles.index');
     }
 }

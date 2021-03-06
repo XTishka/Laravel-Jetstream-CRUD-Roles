@@ -26,7 +26,7 @@ class PermissionsController extends Controller
 
     public function store(StorePermissionRequest $request) {
         $permission = Permission::create($request->validated());
-        LogingActions::writeLog('settings_permissions','permission', 'store', $permission->id, $request->all());
+        LogingActions::writeLog('permission', 'store', $permission->id, $request->all());
         return redirect()->route('permissions.index');
     }
 
@@ -42,14 +42,14 @@ class PermissionsController extends Controller
 
     public function update(UpdatePermissionRequest $request, Permission $permission) {
         $permission->update($request->validated());
-        LogingActions::writeLog('settings_permissions','permission', 'update', $permission->id, $request->all());
+        LogingActions::writeLog('permission', 'update', $permission->id, $request->all());
         return redirect()->route('permissions.index');
     }
 
     public function destroy(Permission $permission) {
         abort_if(Gate::denies('permissions_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $permission->delete();
-        LogingActions::writeLog('settings_permissions','permission', 'delete', $permission->id,null);
+        LogingActions::writeLog('permission', 'delete', $permission->id,null);
         return redirect()->route('permissions.index');
     }
 }
