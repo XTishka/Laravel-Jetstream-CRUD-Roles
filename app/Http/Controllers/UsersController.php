@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Log;
+use App\Http\Middleware\LogingActions;
 
 class UsersController extends Controller
 {
@@ -32,6 +34,7 @@ class UsersController extends Controller
         $request->merge(['password' => Hash::make($request->input('password'))]);
         $user = User::create($request->all());
         $user->roles()->sync($request->input('roles', []));
+        LogingActions::writeLog('settings_users', 'store', $user->id, $request->all());
         return redirect()->route('users.index');
     }
 
@@ -59,6 +62,7 @@ class UsersController extends Controller
             $user->update($request->validated());
         }
         $user->roles()->sync($request->input('roles', []));
+        LogingActions::writeLog('settings_users', 'update', $user->id, $request->all());
         return redirect()->route('users.index');
     }
 
@@ -66,6 +70,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $user->delete();
+        LogingActions::writeLog('settings_users', 'delete', $user->id, null);
         return redirect()->route('users.index');
     }
 }
