@@ -8,6 +8,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 
 class UsersController extends Controller
@@ -32,7 +33,12 @@ class UsersController extends Controller
 
     public function store(StoreUserRequest $request)
     {
-        $user = User::create($request->validated());
+
+        $request->merge([
+            'password' => Hash::make($request->input('password'))
+        ]);
+
+        $user = User::create($request->all());
         $user->roles()->sync($request->input('roles', []));
 
         return redirect()->route('users.index');
