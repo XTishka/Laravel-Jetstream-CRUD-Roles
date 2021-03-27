@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RolesController;
-use App\Http\Controllers\TasksController;
-use App\Http\Controllers\UsersController;
-use App\Http\Controllers\PermissionsController;
+use Modules\Auth\Http\Controllers\RolesController;
+use Modules\Auth\Http\Controllers\UsersController;
+use Modules\Auth\Http\Controllers\PermissionsController;
+use Modules\Tasks\Http\Controllers\TasksController;
 use Illuminate\Support\Facades\Log;
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +26,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::group(['middleware' => 'auth'], function () {
+
+    // TODO: Разнести роуты по модулям
+
+    // Module Auth
+    Route::resource('auth/users', UsersController::class);
+    Route::resource('auth/roles', RolesController::class);
+    Route::resource('auth/permissions', PermissionsController::class);
+
+    // Module :: Tasks
     Route::resource('tasks',TasksController::class);
-    Route::resource('users', UsersController::class);
-    Route::resource('roles', RolesController::class);
-    Route::resource('permissions', PermissionsController::class);
 });
