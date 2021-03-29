@@ -5,6 +5,7 @@ use Modules\Auth\Http\Controllers\RolesController;
 use Modules\Auth\Http\Controllers\UsersController;
 use Modules\Auth\Http\Controllers\PermissionsController;
 use Modules\Tasks\Http\Controllers\TasksController;
+use Modules\Finance\Http\Controllers\FinanceController;
 use Illuminate\Support\Facades\Log;
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('auth/users', UsersController::class);
     Route::resource('auth/roles', RolesController::class);
     Route::resource('auth/permissions', PermissionsController::class);
+
+    // Module Finance
+    Route::resource('finance', FinanceController::class);
 
     // Module :: Tasks
     Route::resource('tasks',TasksController::class);
