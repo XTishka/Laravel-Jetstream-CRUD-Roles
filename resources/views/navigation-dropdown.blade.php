@@ -93,7 +93,7 @@
                                     {{ __('Finance dashboards') }}
                                 </div>
 
-                                <x-jet-dropdown-link href="{{ route('finance.index') }}">
+                                <x-jet-dropdown-link href="{{ route('dashboard.index') }}">
                                     {{ __('Dashboard') }}
                                 </x-jet-dropdown-link>
 
@@ -102,7 +102,7 @@
                                     {{ __('Finance operations') }}
                                 </div>
 
-                                <x-jet-dropdown-link href="{{ route('finance.index') }}">
+                                <x-jet-dropdown-link href="{{ route('operations.index') }}">
                                     {{ __('Operations') }}
                                 </x-jet-dropdown-link>
 
@@ -111,11 +111,11 @@
                                     {{ __('Finance settings') }}
                                 </div>
 
-                                <x-jet-dropdown-link href="{{ route('finance.index') }}">
+                                <x-jet-dropdown-link href="{{ route('currencies.index') }}">
                                     {{ __('Currencies') }}
                                 </x-jet-dropdown-link>
 
-                                <x-jet-dropdown-link href="{{ route('finance.index') }}">
+                                <x-jet-dropdown-link href="{{ route('vat.index') }}">
                                     {{ __('VAT') }}
                                 </x-jet-dropdown-link>
 

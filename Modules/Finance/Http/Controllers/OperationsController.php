@@ -6,7 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class FinanceController extends Controller
+class OperationsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class FinanceController extends Controller
      */
     public function index()
     {
-        return view('finance::finance.index');
+        return view('finance::index');
     }
 
     /**
@@ -23,7 +23,7 @@ class FinanceController extends Controller
      */
     public function create()
     {
-        return view('finance::finance.index');
+        return view('finance::create');
     }
 
     /**
@@ -43,7 +43,7 @@ class FinanceController extends Controller
      */
     public function show($id)
     {
-        return view('finance::finance.index');
+        return view('finance::show');
     }
 
     /**
@@ -53,7 +53,7 @@ class FinanceController extends Controller
      */
     public function edit($id)
     {
-        return view('finance::finance.index');
+        return view('finance::edit');
     }
 
     /**
