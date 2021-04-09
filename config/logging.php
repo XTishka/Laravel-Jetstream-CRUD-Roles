@@ -120,6 +120,13 @@ return [
             'level'  => 'debug'
         ],
 
+        // FINANCE
+        'finance_currencies' => [
+            'driver' => 'single',
+            'path'   => storage_path('logs/finance_currencies.log'),
+            'level'  => 'debug'
+        ],
+
         // TEMPORARY
 
         'tasks' => [

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class CreateCurrencyTable extends Migration
 {
@@ -22,6 +24,44 @@ class CreateCurrencyTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        // Insert default data
+        DB::table('fnc_currencies')->insert(
+            [
+                [
+                    'title'       => 'Украинская гривна',
+                    'code'        => 'UAH',
+                    'designation' => 'грн.',
+                    'base_currency' => 'on',
+                    'created_at'  => Carbon::now(),
+                    'updated_at'  => Carbon::now(),
+                ],
+                [
+                    'title'       => 'Российский рубль',
+                    'code'        => 'RUB',
+                    'designation' => 'руб.',
+                    'base_currency' => null,
+                    'created_at'  => Carbon::now(),
+                    'updated_at'  => Carbon::now(),
+                ],
+                [
+                    'title'       => 'Доллар США',
+                    'code'        => 'USD',
+                    'designation' => '$',
+                    'base_currency' => null,
+                    'created_at'  => Carbon::now(),
+                    'updated_at'  => Carbon::now(),
+                ],
+                [
+                    'title'       => 'Евро',
+                    'code'        => 'EUR',
+                    'designation' => '€',
+                    'base_currency' => null,
+                    'created_at'  => Carbon::now(),
+                    'updated_at'  => Carbon::now(),
+                ]
+            ]
+        );
     }
 
     /**

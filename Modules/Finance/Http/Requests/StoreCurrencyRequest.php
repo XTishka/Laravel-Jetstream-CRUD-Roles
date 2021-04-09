@@ -25,11 +25,20 @@ class StoreCurrencyRequest extends FormRequest
                 'string',
                 'required',
                 'unique:fnc_currencies',
+                'size:3',
+
+                // Check for uppercase
+                function ($attribute, $value, $fail) {
+                    if (strtoupper($value) != $value) {
+                        $fail('The ' . $attribute . ' must be uppercase.');
+                    }
+                },
             ],
             'designation' => [
                 'string',
                 'required',
                 'unique:fnc_currencies',
+                'max:10'
             ],
             'base_currency' => [
                 'string',

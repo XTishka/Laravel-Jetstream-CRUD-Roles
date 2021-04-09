@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
+/Modules/Finance/node_modules
 /.idea
 .env
 .env.backup

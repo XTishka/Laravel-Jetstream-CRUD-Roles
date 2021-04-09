@@ -29,6 +29,8 @@
                 </div>
             </header>
 
+            @include('flash-message')
+
             <!-- Page Content -->
             <main>
                 {{ $slot }}

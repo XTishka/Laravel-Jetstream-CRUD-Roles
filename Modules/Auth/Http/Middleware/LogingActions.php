@@ -12,7 +12,7 @@ class LogingActions
     public static function writeLog($object, $action, $id, $data)
     {
         $channel = [
-            'user'       => 'settings_users',
+            'currency'       => 'finance_currencies',
             'role'       => 'settings_roles',
             'permission' => 'settings_permissions'
         ];
