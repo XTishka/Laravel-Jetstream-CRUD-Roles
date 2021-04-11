@@ -1,14 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Currency details: ' . $currency->title) }}
+            @lang('finance::currencies.show_currency'): {{ $currency->title }}
         </h2>
     </x-slot>
 
 
     <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
         <div class="block mb-8">
-            <a href="{{ route('finance.currencies') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Back to list</a>
+            <a href="{{ route('finance.currencies') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">
+                @lang('finance::currencies.back_to_list')
+            </a>
         </div>
         <div class="flex flex-col">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -25,7 +27,7 @@
                             </tr>
                             <tr class="border-b">
                                 <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    {{ __('Title') }}
+                                    @lang('finance::currencies.title')
                                 </th>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 bg-white divide-y divide-gray-200">
                                     {{ $currency->title }}
@@ -33,7 +35,7 @@
                             </tr>
                             <tr class="border-b">
                                 <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    {{ __('CURRENCY CODE') }}
+                                    @lang('finance::currencies.currency_code')
                                 </th>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 bg-white divide-y divide-gray-200">
                                     {{ $currency->code }}
@@ -41,7 +43,7 @@
                             </tr>
                             <tr class="border-b">
                                 <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    {{ __('Designation') }}
+                                    @lang('finance::currencies.designation')
                                 </th>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 bg-white divide-y divide-gray-200">
                                     {{ $currency->designation }}
@@ -49,7 +51,7 @@
                             </tr>
                             <tr class="border-b">
                                 <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    {{ __('Base currency') }}
+                                    @lang('finance::currencies.base_currency')
                                 </th>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 bg-white divide-y divide-gray-200">
                                     {{ $currency->base_currency }}
@@ -61,7 +63,9 @@
             </div>
         </div>
         <div class="block mt-8">
-            <a href="{{ route('finance.currencies') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Back to list</a>
+            <a href="{{ route('finance.currencies') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">
+                @lang('finance::currencies.back_to_list')
+            </a>
         </div>
 
 

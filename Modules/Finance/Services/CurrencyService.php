@@ -29,8 +29,6 @@ class CurrencyService
             'currency' => 'finance_currencies',
         ];
         $user = Auth::user()->id;
-        $action = ($action === 'store') ? "[$action] " : "[$action]";
-        $action = ($action === 'trash') ? "[$action] " : "[$action]";
-        Log::channel($channel[$object])->info("[user_$user] | $action | [$object" . "_" . "$id] | ", [$data]);
+        Log::channel($channel[$object])->info("[user_$user] | [$action] | [$object" . "_" . "$id] | ", [$data]);
     }
 }

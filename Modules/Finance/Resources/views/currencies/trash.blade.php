@@ -1,14 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Currencies trash') }}
+            @lang('finance::currencies.trash_currency')
         </h2>
     </x-slot>
 
     <div>
         <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="block mb-8">
-                <a href="{{ route('finance.currencies') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Back to list</a>
+                <a href="{{ route('finance.currencies') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">
+                    @lang('finance::currencies.back_to_list')
+                </a>
             </div>
 
             <div class="flex flex-col">
@@ -24,15 +26,15 @@
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        {{ __('Title') }}
+                                        @lang('finance::currencies.title')
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        {{ __('Currency code') }}
+                                        @lang('finance::currencies.currency_code')
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        {{ __('Designation') }}
+                                        @lang('finance::currencies.designation')
                                     </th>
                                     <th scope="col" width="200" class="px-6 py-3 bg-gray-50">
 
@@ -49,7 +51,7 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                             {{ $currency->title }}
                                             @if ($currency->base_currency == 'on')
-                                                <div class="text-sm text-gray-500">{{ __('Base currency') }}</div>
+                                                <div class="text-sm text-gray-500">@lang('finance::currencies.base_currency')</div>
                                             @endif
                                         </td>
 
@@ -66,19 +68,19 @@
 {{--                                               class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Restore</a>--}}
                                             <form class="inline-block"
                                                   action="{{ route('finance.currencies.restore', $currency->id) }}"
-                                                  method="POST" onsubmit="return confirm('Are you sure 111?');">
+                                                  method="POST" onsubmit="return confirm(@lang('finance::currencies.sure'));">
                                                 <input type="hidden" name="_method" value="PUT">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 <input type="submit" class="text-red-600 hover:text-red-900 mb-2 mr-2"
-                                                       value="Restore">
+                                                       value="@lang('finance::currencies.restore')">
                                             </form>
                                             <form class="inline-block"
                                                   action="{{ route('finance.currencies.forcedelete', $currency->id) }}"
-                                                  method="POST" onsubmit="return confirm('Are you sure?');">
+                                                  method="POST" onsubmit="return confirm(@lang('finance::currencies.sure'));">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 <input type="submit" class="text-red-600 hover:text-red-900 mb-2 mr-2"
-                                                       value="Complete delete">
+                                                       value="@lang('finance::currencies.complete_delete')">
                                             </form>
                                         </td>
                                     </tr>
@@ -91,7 +93,9 @@
             </div>
 
             <div class="block mb-8 mt-10">
-                <a href="{{ route('finance.currencies') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Back to list</a>
+                <a href="{{ route('finance.currencies') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">
+                    @lang('finance::currencies.back_to_list')
+                </a>
             </div>
         </div>
     </div>

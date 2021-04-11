@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Currencies') }}
+            @lang('finance::currencies.currencies')
         </h2>
     </x-slot>
 
@@ -9,10 +9,12 @@
         <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="block mb-8 flex justify-between">
                 <a href="{{ route('finance.currencies.create') }}"
-                   class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Add currency</a>
+                   class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    @lang('finance::currencies.add_currency')
+                </a>
                 <a href="{{ route('finance.currencies.trash') }}"
                    class="bg-gray-400 hover:bg-gray-300 text-white font-bold py-2 px-4 rounded">
-                    Trash
+                    @lang('finance::currencies.trash')
                 </a>
             </div>
 
@@ -29,15 +31,15 @@
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        {{ __('Title') }}
+                                        @lang('finance::currencies.title')
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        {{ __('Currency code') }}
+                                        @lang('finance::currencies.currency_code')
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        {{ __('Designation') }}
+                                        @lang('finance::currencies.designation')
                                     </th>
                                     <th scope="col" width="200" class="px-6 py-3 bg-gray-50">
 
@@ -68,16 +70,20 @@
 
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                             <a href="{{ route('finance.currencies.show', $currency->id) }}"
-                                               class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a>
+                                               class="text-blue-600 hover:text-blue-900 mb-2 mr-2">
+                                                @lang('finance::currencies.view')
+                                            </a>
                                             <a href="{{ route('finance.currencies.edit', $currency->id) }}"
-                                               class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
+                                               class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">
+                                                @lang('finance::currencies.edit')
+                                            </a>
                                             <form class="inline-block"
                                                   action="{{ route('finance.currencies.destroy', $currency->id) }}"
-                                                  method="POST" onsubmit="return confirm('Are you sure?');">
+                                                  method="POST" onsubmit="return confirm(@lang('finance::currencies.sure'));">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 <input type="submit" class="text-red-600 hover:text-red-900 mb-2 mr-2"
-                                                       value="Delete">
+                                                       value="@lang('finance::currencies.delete')">
                                             </form>
                                         </td>
                                     </tr>
