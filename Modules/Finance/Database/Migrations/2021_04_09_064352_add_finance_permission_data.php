@@ -20,7 +20,7 @@ class AddFinancePermissionData extends Migration
         DB::table('permissions')->insert(
             [
                 [
-                    'title'       => 'Финансы :: Отчтеты',
+                    'title'       => 'Финансы :: Отчеты',
                     'slug'        => 'finance_dashboards',
                     'description' => 'Доступ к финансовым отчетам',
                     'created_at'  => Carbon::now(),

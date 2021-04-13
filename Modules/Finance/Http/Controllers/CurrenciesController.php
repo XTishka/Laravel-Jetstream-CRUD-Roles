@@ -12,6 +12,8 @@ use Modules\Finance\Http\Requests\UpdateCurrencyRequest;
 use Modules\Finance\Events\CurrencyChangedEvent;
 use Modules\Finance\Events\CurrencyTrashEvent;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Gate;
 
 class CurrenciesController extends Controller
 {
@@ -21,13 +23,15 @@ class CurrenciesController extends Controller
 
     public function index()
     {
-        $currencies = Currency::all();
+        abort_if(Gate::denies('finance_currencies'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $currencies = Currency::paginate(10);
         return view('finance::currencies.index', compact('currencies'));
     }
 
 
     public function create()
     {
+        abort_if(Gate::denies('finance_currencies'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return view('finance::currencies.create');
     }
 
@@ -44,6 +48,7 @@ class CurrenciesController extends Controller
 
     public function show(int $id)
     {
+        abort_if(Gate::denies('finance_currencies'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $currency = Currency::findorFail($id);
         return view('finance::currencies.show', compact('currency'));
     }
@@ -51,6 +56,7 @@ class CurrenciesController extends Controller
 
     public function edit(int $id)
     {
+        abort_if(Gate::denies('finance_currencies'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $currency = Currency::findorFail($id);
         return view('finance::currencies.edit', compact('currency'));
     }
@@ -82,7 +88,8 @@ class CurrenciesController extends Controller
 
     public function trash()
     {
-        $currencies = Currency::onlyTrashed()->get();
+        abort_if(Gate::denies('finance_currencies'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $currencies = Currency::onlyTrashed()->paginate(10);
         return view('finance::currencies.trash', compact('currencies'));
     }
 
