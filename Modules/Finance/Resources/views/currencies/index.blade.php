@@ -104,6 +104,9 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <div class="paggination p-2">
+                                {{ $currencies->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
