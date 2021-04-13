@@ -5,7 +5,8 @@
     "keywords": [],
     "priority": 0,
     "providers": [
-        "Modules\\Finance\\Providers\\FinanceServiceProvider"
+        "Modules\\Finance\\Providers\\FinanceServiceProvider",
+        "Modules\\Finance\\Providers\\EventServiceProvider"
     ],
     "aliases": {},
     "files": [],
