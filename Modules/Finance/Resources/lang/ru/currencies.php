@@ -24,6 +24,7 @@ return [
     'delete'          => 'Удалить',
     'restore'         => 'Восстановить',
     'complete_delete' => 'Полное удаление',
+    'search'          => 'Поиск',
 
     'flash_created'          => 'Валюта была создана',
     'flash_updated'          => 'Валюта была обновлена',

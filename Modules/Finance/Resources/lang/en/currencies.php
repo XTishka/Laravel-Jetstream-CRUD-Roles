@@ -23,6 +23,7 @@ return [
     'delete'          => 'Delete',
     'restore'         => 'Restore',
     'complete_delete' => 'Complete delete',
+    'search'          => 'Search',
 
     'flash_created'  => 'Currency was created',
     'flash_updated'  => 'Currency was updated',
@@ -31,5 +32,5 @@ return [
     'flash_deleted'  => 'Curency completely removed',
     'flash_cant_delete_base' => 'Can\'t delete base currency',
 
-    'sure' => 'Are you sure?'
+    'sure' => 'Are you sure?',
 ];

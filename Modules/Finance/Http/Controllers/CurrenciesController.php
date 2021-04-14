@@ -14,9 +14,14 @@ use Modules\Finance\Events\CurrencyTrashEvent;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Gate;
+use Livewire\WithPagination;
 
 class CurrenciesController extends Controller
 {
+    use WithPagination;
+
+    public $searchTerm;
+
     public function __construct()
     {
     }
@@ -24,8 +29,7 @@ class CurrenciesController extends Controller
     public function index()
     {
         abort_if(Gate::denies('finance_currencies'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        $currencies = Currency::paginate(10);
-        return view('finance::currencies.index', compact('currencies'));
+        return view('finance::currencies.index');
     }
 
 
